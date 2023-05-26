@@ -19,7 +19,7 @@
 
 html {
     font-size: 62.5%;
-    font-family: Inter;
+    font-family: "Inter";
 }
 
 form {
@@ -52,7 +52,13 @@ form {
 #container-row:focus-within {
     transform: scale(1.15);
     transition: 0.3s all ease-in-out;
+    outline: none;
 }
+
+#city:focus {
+    outline: none;
+}
+
 
 
 button[type="submit"] {
@@ -63,6 +69,7 @@ button[type="submit"] {
     font-weight: 100;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    cursor: pointer;
 }
 
 .output {
@@ -81,6 +88,7 @@ button[type="submit"] {
     border-radius: 2rem;
     justify-content: center;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    overflow: hidden;
 }
 
 #right-detail {
@@ -89,7 +97,36 @@ button[type="submit"] {
 
 #detail-img {
     position: relative;
-    height: 80%;
+    height: 0;
+}
+
+div#details-wrap-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 6rem;
+}
+
+.more-temps-infos {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    color: var(--white);
+    text-align: center;
+    text-shadow: 0px 2px 15px #00000017;
+}
+
+.more-temps-infos img {
+    max-width: 3rem;
+}
+
+#pressure, #humidity, #rain-prob {
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #272a2e91;
 }
 
 h1#temperature {
@@ -103,13 +140,13 @@ h1#temperature {
 #wolkeweiss {
     position: absolute;
     left: 0;
-    animation: wolkenlinksReverse 10s infinite;
+    animation: wolkenlinksReverse 15s infinite;
 
 }
 
 #wolkegrau {
     left: 0;
-    animation: wolkenlinks 10s infinite;
+    animation: wolkenlinks 15s infinite;
 }
 
 @keyframes wolkenlinks {
@@ -117,27 +154,27 @@ h1#temperature {
         transform: translateX(0px)translateY(0px);
     }
     33% {
-        transform: translateX(4px)translateY(5px);
-    }
-    66% {
         transform: translateX(14px)translateY(15px);
     }
+    66% {
+        transform: translateX(34px)translateY(15px);
+    }
     99% {
-        transform: translateX(4px)translateY(7px);
+        transform: translateX(0px)translateY(0px);
     }
 }
 
 @keyframes wolkenlinksReverse {
     0% {
-        transform: translateX(10px)translateY(10px);
+        transform: translateX(0px)translateY(0px);
     }
     33% {
-        transform: translateX(-4px)translateY(-5px);
-    }
-    66% {
         transform: translateX(-14px)translateY(-15px);
     }
+    66% {
+        transform: translateX(-34px)translateY(-15px);
+    }
     99% {
-        transform: translateX(-4px)translateY(-7px);
+        transform: translateX(0px)translateY(0px);
     }
 }
