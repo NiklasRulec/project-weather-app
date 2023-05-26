@@ -1,3 +1,17 @@
+// ! ++++++++++ Überprüfen, ob der Browser Local Storage unterstützt ++++++++++
+
+if (typeof Storage !== "undefined") {
+  // Wenn Local Storage unterstützt wird, die vorhandenen Elemente laden
+  if (localStorage.getItem("cityList")) {
+    document.querySelector(".left-list").innerHTML =
+      localStorage.getItem("cityList");
+  } else {
+    alert("Willkommen. Du hast bisher noch keine Städte gespeichert");
+  }
+} else {
+  alert("Local Storage wird in diesem Browser nicht unterstützt");
+}
+
 navigator.geolocation.getCurrentPosition(function (position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -62,6 +76,11 @@ function wetterCheck() {
           newCard.appendChild(cityPressure);
           // ! +++++ CARD INS DOCUMENT EINFÜGEN
           document.querySelector("#left-list").appendChild(newCard);
+          // ! +++++ IN LOCAL STORAGE SPEICHERN
+          localStorage.setItem(
+            "cityList",
+            document.querySelector(".left-list").innerHTML
+          );
         });
     });
 }
