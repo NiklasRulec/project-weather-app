@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <form onsubmit="wetterCheck(); return false">
+    <input id="zipinput" placeholder="ZIP eingeben" type="numer">
     <select class="form-select" id="country" name="country">
       <option>select country</option>
       <option value="AF">Afghanistan</option>
@@ -263,6 +265,9 @@
       <option value="ZM">Zambia</option>
       <option value="ZW">Zimbabwe</option>
   </select>
+  <button type="submit">Go bitch</button>
+</form>
+
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
