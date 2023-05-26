@@ -6,6 +6,8 @@
 :root {
     --black: #181818;
     --white: #fff;
+    --gobtn: #25137b;
+    --lightgray: rgb(234 234 234);
 
 }
 
@@ -20,25 +22,122 @@ html {
     font-family: Inter;
 }
 
+form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 3vh;
+}
+
 #containermain {
-    display: flex
     width: 100vw;
     height: 100vh;
-    background-color: aqua;
+    background-color: var(--lightgray);
 }
 
 #city {
     padding: 2rem 2rem;
     border: 0px;
-    box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.317);
-    width: -webkit-fill-available;
+    box-shadow: 0px 5px 50px rgb(0 0 0 / 9%);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 #container-row {
     display: flex;
     flex-direction: row;
+    transition: 0.3s all ease-in-out;
 }
 
+#container-row:focus-within {
+    transform: scale(1.15);
+    transition: 0.3s all ease-in-out;
+}
+
+
 button[type="submit"] {
-    background-color: red;
+    background-color: var(--gobtn);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 100;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.output {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: center;
+    padding-top: 3vh;
+}
+
+#left-list, #right-detail {
+    display: flex;
+    background-color: rgb(255 255 255 / 63%);
+    height: 70vh;
+    width: 40vw;
+    border-radius: 2rem;
+    justify-content: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#right-detail {
+    background-image: url(../img/Blauer_Himmel.png);
+}
+
+#detail-img {
+    position: relative;
+    height: 80%;
+}
+
+h1#temperature {
+    font-size: 12rem;
+    color: white;
+    font-weight: 200;
+    text-align: center;
+    text-shadow: 0px 2px 15px #00000017;
+}
+
+#wolkeweiss {
+    position: absolute;
+    left: 0;
+    animation: wolkenlinksReverse 10s infinite;
+
+}
+
+#wolkegrau {
+    left: 0;
+    animation: wolkenlinks 10s infinite;
+}
+
+@keyframes wolkenlinks {
+    0% {
+        transform: translateX(0px)translateY(0px);
+    }
+    33% {
+        transform: translateX(4px)translateY(5px);
+    }
+    66% {
+        transform: translateX(14px)translateY(15px);
+    }
+    99% {
+        transform: translateX(4px)translateY(7px);
+    }
+}
+
+@keyframes wolkenlinksReverse {
+    0% {
+        transform: translateX(10px)translateY(10px);
+    }
+    33% {
+        transform: translateX(-4px)translateY(-5px);
+    }
+    66% {
+        transform: translateX(-14px)translateY(-15px);
+    }
+    99% {
+        transform: translateX(-4px)translateY(-7px);
+    }
 }
