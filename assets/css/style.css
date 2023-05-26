@@ -1,0 +1,44 @@
+@font-face {
+    font-family: Inter;
+    src: url(../fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+:root {
+    --black: #181818;
+    --white: #fff;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: Inter;
+}
+
+#containermain {
+    display: flex
+    width: 100vw;
+    height: 100vh;
+    background-color: aqua;
+}
+
+#city {
+    padding: 2rem 2rem;
+    border: 0px;
+    box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.317);
+    width: -webkit-fill-available;
+}
+
+#container-row {
+    display: flex;
+    flex-direction: row;
+}
+
+button[type="submit"] {
+    background-color: red;
+}

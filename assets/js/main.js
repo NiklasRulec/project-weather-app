@@ -49,8 +49,8 @@ function wetterCheck() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          let celsius = (data.main.temp - 32) * (5 / 9);
-          document.querySelector("#temperature").innerHTML = celsius;
+          let celsius = Math.round(data.main.temp - 273.15);
+          document.querySelector("#temperature").innerHTML = celsius + "°C";
         });
     });
 }
