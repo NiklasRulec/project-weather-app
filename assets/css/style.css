@@ -1,6 +1,6 @@
 @font-face {
   font-family: Inter;
-  src: url(../fonts/Inter-VariableFont_slnt\wght.ttf);
+  src: url(../fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
 :root {
@@ -14,6 +14,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+ background: #f1f1f1;
+ border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb {
+ background: #888;
+ border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+ background: #555;
 }
 
 html {
@@ -77,16 +96,44 @@ button[type="submit"] {
   padding-top: 3vh;
 }
 
+#left-list {
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  overflow-y: auto;
+  justify-content: flex-start;
+}
+
+#left-list article {
+  background-color: rgb(234, 234, 234);
+  padding: 2rem;
+  border-radius: 2rem;
+  width: 25vw;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+
+#left-list article:hover {
+  background-color: rgb(225, 224, 224);
+  padding: 2rem;
+  border-radius: 2rem;
+  width: 25vw;
+  transition: 0.2s all ease-in-out;
+}
+
 #left-list,
 #right-detail {
   display: flex;
   background-color: rgb(255 255 255 / 63%);
-  height: 70vh;
-  width: 40vw;
+  height: 80vh;
   border-radius: 2rem;
-  justify-content: center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#right-detail {
   overflow: hidden;
+  justify-content: center;
+  width: 50vw;
 }
 
 #right-detail {
