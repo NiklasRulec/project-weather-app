@@ -14,11 +14,19 @@ navigator.geolocation.getCurrentPosition(function (position) {
 
 let zip = 76473;
 let cc = "de";
+let countryCode = document.querySelector("#country");
 
-fetch(
-  `http://api.openweathermap.org/geo/1.0/zip?zip=${zip},${cc}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
-)
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-  });
+countryCode.addEventListener("change", () => {
+  let countryValue = countryCode.value.toLowerCase();
+  fetch(
+    `http://api.openweathermap.org/geo/1.0/zip?zip=${zip},${countryValue}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+  
+})
+.catch((err) => {
+    console.log(err);
+});
