@@ -12,26 +12,9 @@ navigator.geolocation.getCurrentPosition(function (position) {
     });
 });
 
-// let zipCode = document.querySelector("#zipinput");
-// let countryCode = document.querySelector("#country");
-
 let city = document.querySelector("#city");
 
 function wetterCheck() {
-  // event.preventDefault();
-  // let countryValue = countryCode.value.toLowerCase();
-  // let zipValue = zipCode.value;
-  // console.log(countryValue);
-  // console.log(zipValue);
-
-  // fetch(
-  //   `http://api.openweathermap.org/geo/1.0/zip?zip=${zipValue},${countryValue}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
-  // )
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     console.log(data);
-  //   });
-
   let cityName = city.value;
   console.log(cityName);
   fetch(
