@@ -1,180 +1,180 @@
 @font-face {
-    font-family: Inter;
-    src: url(../fonts/Inter-VariableFont_slnt\,wght.ttf);
+  font-family: Inter;
+  src: url(../fonts/Inter-VariableFont_slnt\wght.ttf);
 }
 
 :root {
-    --black: #181818;
-    --white: #fff;
-    --gobtn: #25137b;
-    --lightgray: rgb(234 234 234);
-
+  --black: #181818;
+  --white: #fff;
+  --gobtn: #25137b;
+  --lightgray: rgb(234 234 234);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
-    font-family: "Inter";
+  font-size: 62.5%;
+  font-family: "Inter";
 }
 
 form {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    padding-top: 3vh;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-top: 3vh;
 }
 
 #containermain {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--lightgray);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--lightgray);
 }
 
 #city {
-    padding: 2rem 2rem;
-    border: 0px;
-    box-shadow: 0px 5px 50px rgb(0 0 0 / 9%);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+  padding: 2rem 2rem;
+  border: 0px;
+  box-shadow: 0px 5px 50px rgb(0 0 0 / 9%);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 #container-row {
-    display: flex;
-    flex-direction: row;
-    transition: 0.3s all ease-in-out;
+  display: flex;
+  flex-direction: row;
+  transition: 0.3s all ease-in-out;
 }
 
 #container-row:focus-within {
-    transform: scale(1.15);
-    transition: 0.3s all ease-in-out;
-    outline: none;
+  transform: scale(1.15);
+  transition: 0.3s all ease-in-out;
+  outline: none;
 }
 
 #city:focus {
-    outline: none;
+  outline: none;
 }
 
-
-
 button[type="submit"] {
-    background-color: var(--gobtn);
-    color: var(--white);
-    border: none;
-    padding: 1rem 2rem;
-    font-weight: 100;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    cursor: pointer;
+  background-color: var(--gobtn);
+  color: var(--white);
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 100;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  cursor: pointer;
 }
 
 .output {
-    display: flex;
-    flex-direction: row;
-    gap: 3rem;
-    justify-content: center;
-    padding-top: 3vh;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  justify-content: center;
+  padding-top: 3vh;
 }
 
-#left-list, #right-detail {
-    display: flex;
-    background-color: rgb(255 255 255 / 63%);
-    height: 70vh;
-    width: 40vw;
-    border-radius: 2rem;
-    justify-content: center;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    overflow: hidden;
+#left-list,
+#right-detail {
+  display: flex;
+  background-color: rgb(255 255 255 / 63%);
+  height: 70vh;
+  width: 40vw;
+  border-radius: 2rem;
+  justify-content: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  overflow: hidden;
 }
 
 #right-detail {
-    background-image: url(../img/Blauer_Himmel.png);
+  background-image: url(../img/Blauer_Himmel.png);
 }
 
 #detail-img {
-    position: relative;
-    height: 0;
+  position: relative;
+  height: 0;
+  top: -150px;
 }
 
 div#details-wrap-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    gap: 2rem;
-    padding-bottom: 6rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 6rem;
 }
 
 .more-temps-infos {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    color: var(--white);
-    text-align: center;
-    text-shadow: 0px 2px 15px #00000017;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  color: var(--white);
+  text-align: center;
+  text-shadow: 0px 2px 15px #00000017;
 }
 
 .more-temps-infos img {
-    max-width: 3rem;
+  max-width: 3rem;
 }
 
-#pressure, #humidity, #rain-prob {
-    font-weight: 400;
-    font-size: 1.8rem;
-    color: #272a2e91;
+#pressure,
+#humidity,
+#rain-prob {
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: #272a2e91;
 }
 
 h1#temperature {
-    font-size: 12rem;
-    color: white;
-    font-weight: 200;
-    text-align: center;
-    text-shadow: 0px 2px 15px #00000017;
+  font-size: 12rem;
+  color: white;
+  font-weight: 200;
+  text-align: center;
+  text-shadow: 0px 2px 15px #00000017;
 }
 
 #wolkeweiss {
-    position: absolute;
-    left: 0;
-    animation: wolkenlinksReverse 15s infinite;
-
+  position: absolute;
+  left: 0;
+  animation: wolkenlinksReverse 15s infinite;
 }
 
 #wolkegrau {
-    left: 0;
-    animation: wolkenlinks 15s infinite;
+  left: 0;
+  animation: wolkenlinks 15s infinite;
 }
 
 @keyframes wolkenlinks {
-    0% {
-        transform: translateX(0px)translateY(0px);
-    }
-    33% {
-        transform: translateX(14px)translateY(15px);
-    }
-    66% {
-        transform: translateX(34px)translateY(15px);
-    }
-    99% {
-        transform: translateX(0px)translateY(0px);
-    }
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  33% {
+    transform: translateX(14px) translateY(15px);
+  }
+  66% {
+    transform: translateX(34px) translateY(15px);
+  }
+  99% {
+    transform: translateX(0px) translateY(0px);
+  }
 }
 
 @keyframes wolkenlinksReverse {
-    0% {
-        transform: translateX(0px)translateY(0px);
-    }
-    33% {
-        transform: translateX(-14px)translateY(-15px);
-    }
-    66% {
-        transform: translateX(-34px)translateY(-15px);
-    }
-    99% {
-        transform: translateX(0px)translateY(0px);
-    }
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  33% {
+    transform: translateX(-14px) translateY(-15px);
+  }
+  66% {
+    transform: translateX(-34px) translateY(-15px);
+  }
+  99% {
+    transform: translateX(0px) translateY(0px);
+  }
 }

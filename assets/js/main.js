@@ -49,8 +49,36 @@ function wetterCheck() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
+          // ! +++++ CELSIUS
           let celsius = Math.round(data.main.temp - 273.15);
           document.querySelector("#temperature").innerHTML = celsius + "°C";
+          // ! +++++ HUMIDITY
+          let humidity = Math.round(data.main.humidity);
+          console.log({ humidity });
+          // ! +++++ PRESSURE
+          let airPressure = Math.round(data.main.pressure);
+          console.log({ airPressure });
+
+          // ! +++++ NEUE CARD ERSTELLEN
+          let newCard = document.createElement("article");
+          // ! +++++ ORTSNAMEN EINFÜGEN
+          let newCityName = document.createElement("h2");
+          newCityName.textContent = "Name : " + cityName;
+          newCard.appendChild(newCityName);
+          // ! +++++ TEMPERATUR EINFÜGEN
+          let cityTemperature = document.createElement("h2");
+          cityTemperature.textContent = "Celsius : " + celsius;
+          newCard.appendChild(cityTemperature);
+          // ! +++++ HUMIDITY EINFÜGEN
+          let cityHumidity = document.createElement("h2");
+          cityHumidity.textContent = "humidity : " + humidity;
+          newCard.appendChild(cityHumidity);
+          // ! +++++ PRESSURE EINFÜGEN
+          let cityPressure = document.createElement("h2");
+          cityPressure.textContent = "pressure : " + airPressure;
+          newCard.appendChild(cityPressure);
+          // ! +++++ CARD INS DOCUMENT EINFÜGEN
+          document.querySelector("#left-list").appendChild(newCard);
         });
     });
 }
