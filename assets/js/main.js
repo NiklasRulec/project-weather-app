@@ -11,3 +11,14 @@ navigator.geolocation.getCurrentPosition(function (position) {
       console.log(data);
     });
 });
+
+let zip = 76473;
+let cc = "de";
+
+fetch(
+  `http://api.openweathermap.org/geo/1.0/zip?zip=${zip},${cc}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
