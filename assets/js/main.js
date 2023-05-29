@@ -38,6 +38,7 @@ navigator.geolocation.getCurrentPosition(function (position) {
       //* Default Name
       let nameDef = data.name;
       document.querySelector("#name").innerHTML += nameDef;
+
     });
 });
 
@@ -117,69 +118,87 @@ function wetterCheck() {
             "cityList",
             document.querySelector("#left-list").innerHTML
           );
-          //! Mirza CODE
-          let weatherBg = document.querySelector("#right-detail");
-          let weatherContainer = document.querySelector("#detail-img");
-          let humidityStyle = document.querySelector("#humidity");
-          let pressureStyle = document.querySelector("#pressure");
-          let rainProbStyle = document.querySelector("#rain-prob");
+             //! Mirza CODE
+            checkWeatherBg(data);
+            //  let weatherBg = document.querySelector("#right-detail");
+            //  let weatherContainer = document.querySelector("#detail-img");
+            //  let humidityStyle = document.querySelector("#humidity");
+            //  let pressureStyle = document.querySelector("#pressure");
+            //  let rainProbStyle = document.querySelector("#rain-prob");
+            //  let wolkeWeiss = document.createElement("img");
+            //  let wolkeGrau = document.createElement("img");
+            //  wolkeWeiss.src = "../assets/img/Wolke weiß.png";
+            //  wolkeWeiss.setAttribute("id","wolkeweiss");
+            //  wolkeGrau.src = "../assets/img/Wolke grau.png";
+            //  wolkeGrau.setAttribute("id","wolkegrau");
+            //   //* Wetter clear
+            //  if (data.weather[0].main === "Clear") {
+            //   weatherContainer.innerHTML = "";
+            //    weatherBg.style.backgroundImage = "url(/assets/img/Blauer_Himmel.png)";
+            //    let sun = document.createElement("img");
+            //    sun.src = "../assets/img/Sonne.png";
+            //    sun.classList.add("sonneAnimation");
+            //    weatherContainer.appendChild(sun);
+            //    console.log(data.weather[0].main);
+            //    //* Wetter clouds
+            //  } else if (data.weather[0].main === "Clouds") {
+            //     weatherContainer.innerHTML = "";
+            //     weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
+            //     humidityStyle.style.color = "white"; 
+            //     pressureStyle.style.color = "white";
+            //     rainProbStyle.style.color = "white";
+            //     weatherContainer.appendChild(wolkeWeiss);
+            //     weatherContainer.appendChild(wolkeGrau);
+            //   //* Wetter Thunderstorm
+            //  } else if (data.weather[0].main === "Thunderstorm") {
+            //   weatherContainer.innerHTML = "";
+            //    weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
+            //    console.log(data.weather[0].main);
+            //    let thunder = document.createElement("img");
+            //    thunder.src = "../assets/img/Blitz.png";
+            //    thunder.classList.add("thunderAnimation");
+            //    weatherContainer.appendChild(thunder);
+            //    let thunderZwei = document.createElement("img");
+            //    thunderZwei.src = "../assets/img/Blitz.png";
+            //    thunderZwei.classList.add("thunderAnimation2");
+            //    weatherContainer.appendChild(thunderZwei);
+            //    weatherContainer.appendChild(wolkeWeiss);
+            //    humidityStyle.style.color = "white"; 
+            //    pressureStyle.style.color = "white";
+            //    rainProbStyle.style.color = "white";
+            //    weatherContainer.appendChild(wolkeWeiss);
+            //    weatherContainer.appendChild(wolkeGrau);
+            //    //* Wetter Rain
+            //  } else if (data.weather[0].main === "Rain") {
+            //    weatherContainer.innerHTML = "";
+            //    weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
+            //    humidityStyle.style.color = "white"; 
+            //    pressureStyle.style.color = "white";
+            //    rainProbStyle.style.color = "white";
+            //    weatherContainer.appendChild(wolkeWeiss);
+            //    weatherContainer.appendChild(wolkeGrau);
+            //     // Create the rain effect
+            //     function createRain() {
+            //       const rainContainer = document.createElement("div");
+            //       rainContainer.classList.add("rain-container");
+            //       const weatherContainer = document.querySelector("#detail-img");
+            //       const containerWidth = weatherContainer.offsetWidth;
+            //       const containerHeight = weatherContainer.offsetHeight;
 
-          if (data.weather[0].main === "Clear") {
-            weatherContainer.innerHTML = "";
-            weatherBg.style.backgroundImage =
-              "url(/assets/img/Blauer_Himmel.png)";
-            let sun = document.createElement("img");
-            sun.src = "../assets/img/Sonne.png";
-            sun.classList.add("sonneAnimation");
-            weatherContainer.appendChild(sun);
-            console.log(data.weather[0].main);
-          } else if (data.weather[0].main === "Thunderstorm") {
-            weatherContainer.innerHTML = "";
-            weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
-            console.log(data.weather[0].main);
-            let thunder = document.createElement("img");
-            thunder.src = "../assets/img/Blitz.png";
-            thunder.classList.add("thunderAnimation");
-            weatherContainer.appendChild(thunder);
-            let thunderZwei = document.createElement("img");
-            thunderZwei.src = "../assets/img/Blitz.png";
-            thunderZwei.classList.add("thunderAnimation2");
-            weatherContainer.appendChild(thunderZwei);
-            humidityStyle.style.color = "white";
-            pressureStyle.style.color = "white";
-            rainProbStyle.style.color = "white";
-          } else if (data.weather[0].main === "Rain") {
-            weatherContainer.innerHTML = "";
-            weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
-            humidityStyle.style.color = "white";
-            pressureStyle.style.color = "white";
-            rainProbStyle.style.color = "white";
-            // Create the rain effect
-            function createRain() {
-              const rainContainer = document.createElement("div");
-              rainContainer.classList.add("rain-container");
-
-              const weatherContainer = document.querySelector("#detail-img");
-
-              const containerWidth = weatherContainer.offsetWidth;
-              const containerHeight = weatherContainer.offsetHeight;
-
-              for (let i = 0; i < 50; i++) {
-                const rainDrop = document.createElement("div");
-                rainDrop.classList.add("rain-drop");
-                rainDrop.style.left = `${Math.random() * containerWidth}px`; // Spread the raindrops within the container
-                rainDrop.style.top = `${Math.random() * containerHeight}px`;
-                rainDrop.style.animationDelay = `${i * 0.1}s`;
-                rainDrop.style.animationDuration = `${Math.random() * 5 + 1}s`;
-                rainContainer.appendChild(rainDrop);
-              }
-
-              weatherContainer.appendChild(rainContainer);
-            }
-
-            // Call the createRain function to start the rain effect
-            createRain();
-          }
+            //       for (let i = 0; i < 50; i++) {
+            //         const rainDrop = document.createElement("div");
+            //         rainDrop.classList.add("rain-drop");
+            //         rainDrop.style.left = `${Math.random() * containerWidth}px`; // Spread the raindrops within the container
+            //         rainDrop.style.top = `${Math.random() * containerHeight}px`;
+            //         rainDrop.style.animationDelay = `${i * 0.1}s`;
+            //         rainDrop.style.animationDuration = `${Math.random() * 5 + 1}s`;
+            //         rainContainer.appendChild(rainDrop);
+            //       }
+            //       weatherContainer.appendChild(rainContainer);
+            //     }
+            //     // Call the createRain function to start the rain effect
+            //     createRain();
+              // }
         });
     });
 }
@@ -206,11 +225,10 @@ let leftListCard = document.querySelectorAll("#left-list article");
 leftListCard.forEach((e) =>
   e.addEventListener("click", function () {
     let headingElement = this.querySelector("h2");
-    let headingText = headingElement.textContent;
-    console.log(headingText);
-    let cityCardName = headingText;
+    let cityCardName = headingElement.textContent;
+    console.log(cityCardName);
     fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${cityCardName}&limit=5&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${cityCardName}&limit=5&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -236,7 +254,94 @@ leftListCard.forEach((e) =>
             console.log({ airPressure });
             document.querySelector("#pressure").innerHTML =
               airPressure + " hPa";
+            // ! ++++ NAME
+            let name = data.name;
+            document.querySelector("#name").innerHTML = "";
+            document.querySelector("#name").innerHTML += name;
+            checkWeatherBg(data);
           });
       });
   })
 );
+
+function checkWeatherBg(weatherData) {
+  console.log(weatherData);
+  let weatherBg = document.querySelector("#right-detail");
+  let weatherContainer = document.querySelector("#detail-img");
+  let humidityStyle = document.querySelector("#humidity");
+  let pressureStyle = document.querySelector("#pressure");
+  let rainProbStyle = document.querySelector("#rain-prob");
+  let wolkeWeiss = document.createElement("img");
+  let wolkeGrau = document.createElement("img");
+  wolkeWeiss.src = "../assets/img/Wolke weiß.png";
+  wolkeWeiss.setAttribute("id","wolkeweiss");
+  wolkeGrau.src = "../assets/img/Wolke grau.png";
+  wolkeGrau.setAttribute("id","wolkegrau");
+   //* Wetter clear
+  if (weatherData.weather[0].main === "Clear") {
+   weatherContainer.innerHTML = "";
+    weatherBg.style.backgroundImage = "url(/assets/img/Blauer_Himmel.png)";
+    let sun = document.createElement("img");
+    sun.src = "../assets/img/Sonne.png";
+    sun.classList.add("sonneAnimation");
+    weatherContainer.appendChild(sun);
+    //* Wetter clouds
+  } else if (weatherData.weather[0].main === "Clouds") {
+     weatherContainer.innerHTML = "";
+     weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
+     humidityStyle.style.color = "white"; 
+     pressureStyle.style.color = "white";
+     rainProbStyle.style.color = "white";
+     weatherContainer.appendChild(wolkeWeiss);
+     weatherContainer.appendChild(wolkeGrau);
+   //* Wetter Thunderstorm
+  } else if (weatherData.weather[0].main === "Thunderstorm") {
+   weatherContainer.innerHTML = "";
+    weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
+    console.log(data.weather[0].main);
+    let thunder = document.createElement("img");
+    thunder.src = "../assets/img/Blitz.png";
+    thunder.classList.add("thunderAnimation");
+    weatherContainer.appendChild(thunder);
+    let thunderZwei = document.createElement("img");
+    thunderZwei.src = "../assets/img/Blitz.png";
+    thunderZwei.classList.add("thunderAnimation2");
+    weatherContainer.appendChild(thunderZwei);
+    weatherContainer.appendChild(wolkeWeiss);
+    humidityStyle.style.color = "white"; 
+    pressureStyle.style.color = "white";
+    rainProbStyle.style.color = "white";
+    weatherContainer.appendChild(wolkeWeiss);
+    weatherContainer.appendChild(wolkeGrau);
+    //* Wetter Rain
+  } else if (weatherData.weather[0].main === "Rain") {
+    weatherContainer.innerHTML = "";
+    weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
+    humidityStyle.style.color = "white"; 
+    pressureStyle.style.color = "white";
+    rainProbStyle.style.color = "white";
+    weatherContainer.appendChild(wolkeWeiss);
+    weatherContainer.appendChild(wolkeGrau);
+     // Create the rain effect
+     function createRain() {
+       const rainContainer = document.createElement("div");
+       rainContainer.classList.add("rain-container");
+       const weatherContainer = document.querySelector("#detail-img");
+       const containerWidth = weatherContainer.offsetWidth;
+       const containerHeight = weatherContainer.offsetHeight;
+
+       for (let i = 0; i < 50; i++) {
+         const rainDrop = document.createElement("div");
+         rainDrop.classList.add("rain-drop");
+         rainDrop.style.left = `${Math.random() * containerWidth}px`; // Spread the raindrops within the container
+         rainDrop.style.top = `${Math.random() * containerHeight}px`;
+         rainDrop.style.animationDelay = `${i * 0.1}s`;
+         rainDrop.style.animationDuration = `${Math.random() * 5 + 1}s`;
+         rainContainer.appendChild(rainDrop);
+       }
+       weatherContainer.appendChild(rainContainer);
+     }
+     // Call the createRain function to start the rain effect
+     createRain();
+}
+}
