@@ -35,6 +35,9 @@ navigator.geolocation.getCurrentPosition(function (position) {
       //* Default Pressure
       let pressureDef = data.main.pressure;
       document.querySelector("#pressure").innerHTML = pressureDef + "%";
+      //* Default Name
+      let nameDef = data.name;
+      document.querySelector("#name").innerHTML += nameDef;
     });
 });
 
@@ -71,6 +74,10 @@ function wetterCheck() {
           let airPressure = Math.round(data.main.pressure);
           console.log({ airPressure });
           document.querySelector("#pressure").innerHTML = airPressure + " hPa";
+          // ! +++++ NAME
+          let name = data.name;
+          document.querySelector("#name").innerHTML = "";
+          document.querySelector("#name").innerHTML += name;
 
           // - +++++ NEUE CARD ERSTELLEN
           let newCard = document.createElement("article");
