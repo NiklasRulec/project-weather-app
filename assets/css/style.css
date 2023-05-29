@@ -10,6 +10,10 @@
   --lightgray: rgb(234 234 234);
 }
 
+#loc-icon {
+  width: 30px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -70,7 +74,17 @@ form {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   font-size: 2rem;
+  display: block;
+  text-transform: capitalize;
 }
+
+#city:not(::first-letter) {
+  text-transform: lowercase;
+}
+
+/* input#city:first-letter {
+  text-transform: uppercase;
+} */
 
 #container-row {
   display: flex;
@@ -128,6 +142,11 @@ button[type="submit"] {
   overflow-x: clip;
   display: flex;
   justify-content: space-between;
+  text-transform: lowercase;
+}
+
+.city-left:first-letter, #name::first-letter {
+text-transform: uppercase;
 }
 
 #left-list article:hover {
@@ -190,6 +209,7 @@ h5#name {
   color: var(--white);
   text-align: center;
   text-shadow: 0px 2px 15px #00000017;
+  text-transform: lowercase;
 }
 
 .more-temps-infos img {

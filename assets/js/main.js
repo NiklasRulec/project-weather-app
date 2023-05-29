@@ -38,7 +38,7 @@ navigator.geolocation.getCurrentPosition(function (position) {
       //* Default Name
       let nameDef = data.name;
       document.querySelector("#name").innerHTML += nameDef;
-
+      //*
     });
 });
 
@@ -78,7 +78,8 @@ function wetterCheck() {
           // ! +++++ NAME
           let name = data.name;
           document.querySelector("#name").innerHTML = "";
-          document.querySelector("#name").innerHTML += name;
+          document.querySelector("#name").innerHTML += cityName;
+          //*
 
           // - +++++ NEUE CARD ERSTELLEN
           let newCard = document.createElement("article");
@@ -108,6 +109,47 @@ function wetterCheck() {
           newCard.appendChild(deleteButton);
           // - +++++ CARD INS DOCUMENT EINFÜGEN
           document.querySelector("#left-list").appendChild(newCard);
+          newCard.addEventListener("click", function () {
+            let headingElement = this.querySelector("h2");
+            let cityCardName = headingElement.textContent;
+            console.log(cityCardName);
+            fetch(
+              `https://api.openweathermap.org/geo/1.0/direct?q=${cityCardName}&limit=5&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+            )
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+                let cityLat = data[0].lat;
+                let cityLon = data[0].lon;
+                console.log({ cityLat }, { cityLon });
+                fetch(
+                  `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+                )
+                  .then((response) => response.json())
+                  .then((data) => {
+                    console.log(data);
+                    // ! +++++ CELSIUS
+                    let celsius = Math.round(data.main.temp - 273.15);
+                    document.querySelector("#temperature").innerHTML = celsius + "°C";
+                    // ! +++++ HUMIDITY
+                    let humidity = Math.round(data.main.humidity);
+                    console.log({ humidity });
+                    document.querySelector("#humidity").innerHTML = humidity + "%";
+                    // ! +++++ PRESSURE
+                    let airPressure = Math.round(data.main.pressure);
+                    console.log({ airPressure });
+                    document.querySelector("#pressure").innerHTML =
+                      airPressure + " hPa";
+                    // ! ++++ NAME
+                    let name = data.name;
+                    document.querySelector("#name").innerHTML = "";
+                    document.querySelector("#name").innerHTML += cityCardName;
+                    //* 
+                    checkWeatherBg(data);
+                  });
+              });
+          })
+
           newCard.style.opacity = 0;
           window.getComputedStyle(newCard).opacity;
           newCard.style.opacity = 1;
@@ -218,51 +260,6 @@ leftList.addEventListener("click", function (event) {
   }
 });
 
-// ! ++++++++++ CARD CLICK FUNCTION ++++++++++
-
-let leftListCard = document.querySelectorAll("#left-list article");
-
-leftListCard.forEach((e) =>
-  e.addEventListener("click", function () {
-    let headingElement = this.querySelector("h2");
-    let cityCardName = headingElement.textContent;
-    console.log(cityCardName);
-    fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${cityCardName}&limit=5&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        let cityLat = data[0].lat;
-        let cityLon = data[0].lon;
-        console.log({ cityLat }, { cityLon });
-        fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            // ! +++++ CELSIUS
-            let celsius = Math.round(data.main.temp - 273.15);
-            document.querySelector("#temperature").innerHTML = celsius + "°C";
-            // ! +++++ HUMIDITY
-            let humidity = Math.round(data.main.humidity);
-            console.log({ humidity });
-            document.querySelector("#humidity").innerHTML = humidity + "%";
-            // ! +++++ PRESSURE
-            let airPressure = Math.round(data.main.pressure);
-            console.log({ airPressure });
-            document.querySelector("#pressure").innerHTML =
-              airPressure + " hPa";
-            // ! ++++ NAME
-            let name = data.name;
-            document.querySelector("#name").innerHTML = "";
-            document.querySelector("#name").innerHTML += name;
-            checkWeatherBg(data);
-          });
-      });
-  })
-);
 
 function checkWeatherBg(weatherData) {
   console.log(weatherData);
@@ -345,3 +342,49 @@ function checkWeatherBg(weatherData) {
      createRain();
 }
 }
+
+//! ++++++++++ CARD CLICK FUNCTION ++++++++++
+
+let leftListCard = document.querySelectorAll("#left-list article");
+
+leftListCard.forEach((e) =>
+  e.addEventListener("click", function () {
+    let headingElement = this.querySelector("h2");
+    let cityCardName = headingElement.textContent;
+    console.log(cityCardName);
+    fetch(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${cityCardName}&limit=5&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        let cityLat = data[0].lat;
+        let cityLon = data[0].lon;
+        console.log({ cityLat }, { cityLon });
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            // ! +++++ CELSIUS
+            let celsius = Math.round(data.main.temp - 273.15);
+            document.querySelector("#temperature").innerHTML = celsius + "°C";
+            // ! +++++ HUMIDITY
+            let humidity = Math.round(data.main.humidity);
+            console.log({ humidity });
+            document.querySelector("#humidity").innerHTML = humidity + "%";
+            // ! +++++ PRESSURE
+            let airPressure = Math.round(data.main.pressure);
+            console.log({ airPressure });
+            document.querySelector("#pressure").innerHTML =
+              airPressure + " hPa";
+            // ! ++++ NAME
+            // let name = data.name;
+            document.querySelector("#name").innerHTML = "";
+            document.querySelector("#name").innerHTML += cityCardName;
+            checkWeatherBg(data);
+          });
+      });
+  })
+);
