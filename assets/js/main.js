@@ -35,6 +35,9 @@ navigator.geolocation.getCurrentPosition(function (position) {
       //* Default Pressure
       let pressureDef = data.main.pressure;
       document.querySelector("#pressure").innerHTML = pressureDef + "%";
+      //* Default Name
+      let nameDef = data.name;
+      document.querySelector("#name").innerHTML += nameDef;
 
     });
 });
@@ -72,6 +75,10 @@ function wetterCheck() {
           let airPressure = Math.round(data.main.pressure);
           console.log({ airPressure });
           document.querySelector("#pressure").innerHTML = airPressure + " hPa";
+          // ! +++++ NAME
+          let name = data.name;
+          document.querySelector("#name").innerHTML = "";
+          document.querySelector("#name").innerHTML += name;
 
           // - +++++ NEUE CARD ERSTELLEN
           let newCard = document.createElement("article");
@@ -117,7 +124,13 @@ function wetterCheck() {
              let humidityStyle = document.querySelector("#humidity");
              let pressureStyle = document.querySelector("#pressure");
              let rainProbStyle = document.querySelector("#rain-prob");
-   
+             let wolkeWeiss = document.createElement("img");
+             let wolkeGrau = document.createElement("img");
+             wolkeWeiss.src = "../assets/img/Wolke weiß.png";
+             wolkeWeiss.setAttribute("id","wolkeweiss");
+             wolkeGrau.src = "../assets/img/Wolke grau.png";
+             wolkeGrau.setAttribute("id","wolkegrau");
+              //* Wetter clear
              if (data.weather[0].main === "Clear") {
               weatherContainer.innerHTML = "";
                weatherBg.style.backgroundImage = "url(/assets/img/Blauer_Himmel.png)";
@@ -126,6 +139,16 @@ function wetterCheck() {
                sun.classList.add("sonneAnimation");
                weatherContainer.appendChild(sun);
                console.log(data.weather[0].main);
+               //* Wetter clouds
+             } else if (data.weather[0].main === "Clouds") {
+                weatherContainer.innerHTML = "";
+                weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
+                humidityStyle.style.color = "white"; 
+                pressureStyle.style.color = "white";
+                rainProbStyle.style.color = "white";
+                weatherContainer.appendChild(wolkeWeiss);
+                weatherContainer.appendChild(wolkeGrau);
+              //* Wetter Thunderstorm
              } else if (data.weather[0].main === "Thunderstorm") {
               weatherContainer.innerHTML = "";
                weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
@@ -138,22 +161,26 @@ function wetterCheck() {
                thunderZwei.src = "../assets/img/Blitz.png";
                thunderZwei.classList.add("thunderAnimation2");
                weatherContainer.appendChild(thunderZwei);
+               weatherContainer.appendChild(wolkeWeiss);
                humidityStyle.style.color = "white"; 
                pressureStyle.style.color = "white";
                rainProbStyle.style.color = "white";
+               weatherContainer.appendChild(wolkeWeiss);
+               weatherContainer.appendChild(wolkeGrau);
+               //* Wetter Rain
              } else if (data.weather[0].main === "Rain") {
                weatherContainer.innerHTML = "";
                weatherBg.style.backgroundImage = "url(/assets/img/Gewitter.png)";
                humidityStyle.style.color = "white"; 
                pressureStyle.style.color = "white";
                rainProbStyle.style.color = "white";
+               weatherContainer.appendChild(wolkeWeiss);
+               weatherContainer.appendChild(wolkeGrau);
                 // Create the rain effect
                 function createRain() {
                   const rainContainer = document.createElement("div");
                   rainContainer.classList.add("rain-container");
-
                   const weatherContainer = document.querySelector("#detail-img");
-
                   const containerWidth = weatherContainer.offsetWidth;
                   const containerHeight = weatherContainer.offsetHeight;
 
@@ -166,17 +193,11 @@ function wetterCheck() {
                     rainDrop.style.animationDuration = `${Math.random() * 5 + 1}s`;
                     rainContainer.appendChild(rainDrop);
                   }
-
                   weatherContainer.appendChild(rainContainer);
                 }
-
                 // Call the createRain function to start the rain effect
                 createRain();
-
-
              }
-
-
         });
     });
 }
