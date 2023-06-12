@@ -34,7 +34,7 @@ navigator.geolocation.getCurrentPosition(function (position) {
       document.querySelector("#humidity").innerHTML = humidityDef + "%";
       //* Default Pressure
       let pressureDef = data.main.pressure;
-      document.querySelector("#pressure").innerHTML = pressureDef + "%";
+      document.querySelector("#pressure").innerHTML = pressureDef + "";
       //* Default Name
       let nameDef = data.name;
       document.querySelector("#name").innerHTML += nameDef;
