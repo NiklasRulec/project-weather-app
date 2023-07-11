@@ -43,7 +43,7 @@ navigator.geolocation.getCurrentPosition(function (position) {
     });
 });
 
-// ! ++++++++++ STADT EINGEBEN & WETTERDATEN LADEN ++++++++++
+// ! ++++++++++ STADT EINGEBEN & WETTERDATEN LADEN +++++++++++
 
 let city = document.querySelector("#city");
 
