@@ -51,7 +51,7 @@ function wetterCheck() {
   let cityName = city.value;
   console.log(cityName);
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${key}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${key}`
   )
     .then((response) => response.json())
     .then((data) => {
