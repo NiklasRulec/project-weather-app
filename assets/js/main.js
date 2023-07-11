@@ -1,4 +1,5 @@
 // ! ++++++++++ ÜBERPRÜFEN; OB BROWSER LOCAL STORAGE UNTERSTÜTZT ++++++++++
+let key = "f8387d4ef2ea8a7aad3388b8d52c776c";
 
 if (typeof Storage !== "undefined") {
   // Wenn Local Storage unterstützt wird, die vorhandenen Elemente laden
@@ -20,7 +21,7 @@ navigator.geolocation.getCurrentPosition(function (position) {
   console.log({ lat }, { lon });
 
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -50,7 +51,7 @@ function wetterCheck() {
   let cityName = city.value;
   console.log(cityName);
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+    `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${key}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -59,7 +60,7 @@ function wetterCheck() {
       let cityLon = data[0].lon;
       console.log({ cityLat }, { cityLon });
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=${key}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -106,7 +107,7 @@ function wetterCheck() {
             let cityCardName = headingElement.textContent;
             console.log(cityCardName);
             fetch(
-              `https://api.openweathermap.org/geo/1.0/direct?q=${cityCardName}&limit=5&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+              `https://api.openweathermap.org/geo/1.0/direct?q=${cityCardName}&limit=5&appid=${key}`
             )
               .then((response) => response.json())
               .then((data) => {
@@ -115,7 +116,7 @@ function wetterCheck() {
                 let cityLon = data[0].lon;
                 console.log({ cityLat }, { cityLon });
                 fetch(
-                  `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+                  `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=${key}`
                 )
                   .then((response) => response.json())
                   .then((data) => {
@@ -266,7 +267,7 @@ leftListCard.forEach((e) =>
     let cityCardName = headingElement.textContent;
     console.log(cityCardName);
     fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${cityCardName}&limit=5&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${cityCardName}&limit=5&appid=${key}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -275,7 +276,7 @@ leftListCard.forEach((e) =>
         let cityLon = data[0].lon;
         console.log({ cityLat }, { cityLon });
         fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=a0b3f65f61d0c176e7f5b42fa8744a3b`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=${key}`
         )
           .then((response) => response.json())
           .then((data) => {
