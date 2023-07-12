@@ -161,7 +161,7 @@ function wetterCheck() {
     });
 }
 
-// ! ++++++++++ DELETE BUTTON FUNCTION ++++++++++
+// ! +++++++++++ DELETE BUTTON FUNCTION +++++++++++
 let leftList = document.querySelector("#left-list");
 
 leftList.addEventListener("click", function (event) {
