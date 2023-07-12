@@ -185,9 +185,9 @@ function checkWeatherBg(weatherData) {
   let rainProbStyle = document.querySelector("#rain-prob");
   let wolkeWeiss = document.createElement("img");
   let wolkeGrau = document.createElement("img");
-  wolkeWeiss.src = "../assets/img/Wolke weiß.png";
+  wolkeWeiss.src = "../assets/img/Wolke-weiß.png";
   wolkeWeiss.setAttribute("id", "wolkeweiss");
-  wolkeGrau.src = "../assets/img/Wolke grau.png";
+  wolkeGrau.src = "../assets/img/Wolke-grau.png";
   wolkeGrau.setAttribute("id", "wolkegrau");
   //* Wetter clear
   if (weatherData.weather[0].main === "Clear") {
